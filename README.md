@@ -39,9 +39,9 @@ This project is a web scraper and web application that collects event informatio
 
 4. **Add the following environment variables to the `.env` file**:
 
-   DB_USER=postgres
-   DB_PASSWORD=pedram38739197
-   DB_NAME=postgres
+   DB_USER= your username
+   DB_PASSWORD= your password
+   DB_NAME=your database name
    DB_HOST=localhost
    DB_PORT=5432
 
