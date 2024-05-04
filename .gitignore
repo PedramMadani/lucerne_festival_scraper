@@ -1,0 +1,94 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Packages
+*.egg
+*.egg-info/
+dist/
+build/
+eggs/
+parts/
+var/
+*.tar.gz
+*.zip
+*.whl
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Virtual environments
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+.venv/
+
+# Pyre type checker
+.pyre/
+
+# mypy type checker
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pytest
+.cache/
+
+# Pyre type checker
+.pyre/
+
+# Coverage reports
+htmlcov/
+.coverage
+.coverage.*
+.cache/
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# PyCharm
+.idea/
+
+# Environments
+.env
+.env.*
+
+# FastAPI specific
+*.db
+instance/
+*.sqlite3
+
+# Docker
+*.log
+docker-compose.override.yml
+
+# SQLAlchemy cache
+*.log
+*.pid
+*.tgz
+*.sqlite
+*.db
+
+# Other
+*.bak
+*.swp
+*.swo
+*.swn
+*.DS_Store
+._*
+Thumbs.db
+Desktop.ini
+*.lock

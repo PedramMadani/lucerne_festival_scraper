@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+
+        .loading,
+        .scraping-status {
+            display: none;
+            font-size: 1.5em;
+            text-align: center;
+            margin: 20px;
+            color: #333;
+        }
+
+        .events-table {
+            display: none;
+            width: 90%;
+            border-collapse: collapse;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        .events-table th,
+        .events-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .events-table th {
+            background-color: #f4f4f4;
+        }
+
+        .events-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .events-table tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .events-table th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .events-table td img {
+            width: 100px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .date-column {
+            white-space: nowrap;
+            width: 80px;
+        }
+    </style>
+    <script>
+        async function scrapeEvents() {
+            const loadingElem = document.getElementById('loading');
+            const statusElem = document.getElementById('scraping-status');
+
+            loadingElem.style.display = 'block';
+
+            try {
+                const response = await fetch('/scrape/');
+                const data = await response.json();
+
+                loadingElem.style.display = 'none';
+                statusElem.style.display = 'block';
+
+                if (data.status === "Scraped successfully") {
+                    statusElem.innerText = "Scraping done successfully!";
+                    loadEvents();
+                } else {
+                    statusElem.innerText = "Failed to scrape!";
+                }
+            } catch (error) {
+                loadingElem.style.display = 'none';
+                statusElem.innerText = "An error occurred!";
+                statusElem.style.display = 'block';
+            }
+        }
+
+        async function loadEvents() {
+            const tableElem = document.getElementById('events-table');
+            const response = await fetch('/events/data/');
+            const events = await response.json();
+
+            tableElem.style.display = 'block';
+            let tableContent = '<tr><th>Day</th><th class="date-column">Date</th><th>Time</th><th>Location</th><th>Title</th><th>Artists</th><th>Works</th><th>Image</th></tr>';
+            events.forEach(event => {
+                tableContent += `<tr><td>${event.day_of_week}</td><td class="date-column">${event.date}</td><td>${event.time}</td><td>${event.location}</td><td>${event.title}</td><td>${event.artists.join(", ")}</td><td>${event.works.join(", ")}</td><td><img src="${event.image_link}" alt="Event Image"></td></tr>`;
+            });
+            tableElem.innerHTML = tableContent;
+        }
+    </script>
+</head>
+
+<body onload="scrapeEvents()">
+    <div id="loading" class="loading">Loading... Please wait while scraping...</div>
+    <div id="scraping-status" class="scraping-status"></div>
+    <table id="events-table" class="events-table"></table>
+</body>
+
+</html>
