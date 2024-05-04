@@ -3,15 +3,17 @@ This is for Future Demand
 This project is a web scraper and web application that collects event information from a specific URL and displays it using a FastAPI server. The data is stored in a PostgreSQL database, and the application is containerized using Docker.
 
 ## Project Structure
+```plaintext
 .
-├── main.py # The main FastAPI application
-├── models.py # SQLAlchemy models
-├── database.py # Database connection setup
-├── events.html # HTML template for displaying events
+├── main.py           # The main FastAPI application
+├── models.py         # SQLAlchemy models
+├── database.py       # Database connection setup
+├── events.html       # HTML template for displaying events
 ├── docker-compose.yml # Docker Compose configuration
-├── Dockerfile # Dockerfile for FastAPI app
-├── requirements.txt # Python dependencies
-└── .env # Environment variables
+├── Dockerfile        # Dockerfile for FastAPI app
+├── requirements.txt  # Python dependencies
+└── .env              # Environment variables
+```
 
 
 ## Setup Instructions
