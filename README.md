@@ -18,37 +18,33 @@ This project is a web scraper and web application that collects event informatio
 
 ## Setup Instructions
 
-### Prerequisites
-
-1. **Docker**: Ensure you have Docker installed on your machine. You can download it from [Docker's official website](https://www.docker.com/get-started).
-2. **Git**: Make sure you have Git installed to clone the repository. You can download it from [Git's official website](https://git-scm.com/downloads).
-
 ### Project Setup
 
 1. **Clone the repository**:
-
+```
    git clone <repository-url>
+```
 
 2. **Navigate to the project directory**:
-
+```
    cd <project-directory>
-
+```
 3. **Create a `.env` file**:
-
+```
    touch .env
-
+```
 4. **Add the following environment variables to the `.env` file**:
-
+```
    DB_USER= your username
    DB_PASSWORD= your password
    DB_NAME=your database name
    DB_HOST=localhost
    DB_PORT=5432
-
+```
 5. **Build and run the application using Docker**:
-
+```
    docker-compose up --build
-
+```
    The application will be accessible at `http://localhost:8000`.
 
 ### Usage
